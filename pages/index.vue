@@ -13,7 +13,7 @@
            2. Update the src below to: /images/your-image.jpg
            ============================================= -->
       <img
-        src="/images/bnw-profile.jpg"
+        src="/images/BNW landscape.png"
         alt="Profile"
         class="hero-image"
       />
