@@ -4,7 +4,7 @@
 
     <!-- HERO SECTION WITH CENTER IMAGE -->
     <section class="hero">
-      <h1 class="hero-title">Welcome to Nongizzharith</h1>
+      <h1 class="hero-title">NONG IZZ HARITH</h1>
 
       <!-- =============================================
            CENTER PROFILE IMAGE
@@ -13,7 +13,7 @@
            2. Update the src below to: /images/your-image.jpg
            ============================================= -->
       <img
-        src="/images/profile.png"
+        src="/images/bnw-profile.jpg"
         alt="Profile"
         class="hero-image"
       />

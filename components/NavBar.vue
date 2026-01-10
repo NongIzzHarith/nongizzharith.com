@@ -1,11 +1,16 @@
 <template>
   <nav class="nav" :class="{ scrolled: isScrolled }">
-    <NuxtLink to="/" class="nav-logo">Nongizzharith</NuxtLink>
+    <ul class="nav-links nav-left">
+      <li><NuxtLink to="#work">Portfolio</NuxtLink></li>
+      <li><NuxtLink to="#work">Work</NuxtLink></li>
+      <li><NuxtLink to="#contact">Newsletter</NuxtLink></li>
+    </ul>
 
-    <ul class="nav-links">
-      <li><NuxtLink to="/about">About</NuxtLink></li>
-      <li><NuxtLink to="/work">Work</NuxtLink></li>
-      <li><NuxtLink to="/contact">Contact</NuxtLink></li>
+    <NuxtLink to="/" class="nav-logo">NONG IZZ HARITH</NuxtLink>
+
+    <ul class="nav-links nav-right">
+      <li><NuxtLink to="#about">About</NuxtLink></li>
+      <li><NuxtLink to="#contact">Contact</NuxtLink></li>
     </ul>
 
     <button class="mobile-menu-btn" @click="toggleMenu">

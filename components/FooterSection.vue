@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <p class="copyright">&copy; {{ currentYear }} Nongizzharith. All rights reserved.</p>
+    <p class="copyright">&copy; {{ currentYear }} NONG IZZ HARITH. All rights reserved.</p>
   </footer>
 </template>
 

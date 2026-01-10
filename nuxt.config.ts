@@ -4,11 +4,11 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   app: {
     head: {
-      title: 'Nongizzharith',
+      title: 'NONG IZZ HARITH',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Nongizzharith - Welcome to my site' }
+        { name: 'description', content: 'NONG IZZ HARITH - Welcome to my site' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
