@@ -17,9 +17,9 @@ const display = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "NONGIZZ_OS | Nong Izz Harith",
+  title: "Nong Izz Harith",
   description:
-    "Personal operating system of Nong Izz Harith, builder, strategist, and digital experimenter.",
+    "Personal site of Nong Izz Harith, builder, strategist, and digital experimenter.",
   icons: { icon: "/favicon.ico" },
 };
 
@@ -28,8 +28,28 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const themeScript = `
+    (() => {
+      try {
+        const stored = window.localStorage.getItem("nongizzharith-theme");
+        const theme = stored === "light" || stored === "dark"
+          ? stored
+          : window.matchMedia("(prefers-color-scheme: light)").matches
+            ? "light"
+            : "dark";
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch {
+        document.documentElement.dataset.theme = "dark";
+      }
+    })();
+  `;
+
   return (
     <html lang="en" className={`${mono.variable} ${display.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <div className="grid-bg" aria-hidden />
         <div className="scanlines" aria-hidden />

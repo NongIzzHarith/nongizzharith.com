@@ -1,40 +1,96 @@
+import Script from "next/script";
+import ThemeToggle from "@/components/ThemeToggle";
+
+const SOCIAL_LINKS = {
+  instagram: "https://www.instagram.com/nongharith/",
+  x: "https://x.com/nongizzharith",
+  youtube: "https://www.youtube.com/@nongizzharith",
+  linkedin: "https://linkedin.com/in/nongizzharith",
+};
+
 const NOTES = [
   {
     date: "MAY 2026",
-    tag: "TASTE",
-    title: "A portfolio should feel like a control room",
+    tag: "FOUNDER MODE",
+    title: "Founder mode is a student operating system",
     excerpt:
-      "The useful version of a personal site is not a museum. It shows judgment, constraints, and current motion.",
+      "A way to build before permission, write before certainty, and let small windows of time compound.",
   },
   {
     date: "APR 2026",
-    tag: "BRAND",
-    title: "Quiet markets reward sharp signals",
+    tag: "IDENTITY",
+    title: "The Bahrain return",
     excerpt:
-      "Most categories are not boring. They are under-art-directed. The opportunity is to give them language and gravity.",
+      "Ten years outside Malaysia made the local market feel familiar, strange, and worth studying.",
   },
   {
     date: "APR 2026",
-    tag: "SYSTEMS",
-    title: "Build the machine around the builder",
+    tag: "COMEBACK",
+    title: "When the body becomes market research",
     excerpt:
-      "A system is not productivity theater. It is a way to keep taste, memory, and execution in the same room.",
+      "Two years away from climbing turned a private constraint into sharper product instinct.",
   },
 ];
 
 const CURRENT = [
   {
-    label: "READING",
-    value: "Cities, taste, markets",
+    label: "MODE",
+    value: "Founder mode, student constraints",
   },
   {
-    label: "BUILDING",
-    value: "Personal software, brand systems, AI workflows",
+    label: "BASE",
+    value: "Cyberjaya, MMU orbit",
   },
   {
-    label: "EXPLORING",
-    value: "How small teams look inevitable",
+    label: "NOW",
+    value: "Building, writing, learning in public",
   },
+  {
+    label: "SIGNAL",
+    value: "Taste, systems, personal leverage",
+  },
+];
+
+const STORY_POINTS = [
+  {
+    title: "Gulf-raised, Malaysia-built",
+    meta: "Bahrain -> Cyberjaya",
+    detail:
+      "Ten years outside Malaysia made the return feel like a market map.",
+  },
+  {
+    title: "The student constraint",
+    meta: "MMU / Engineering",
+    detail: "Computer engineering by day. Building systems in the margins.",
+  },
+  {
+    title: "The comeback thread",
+    meta: "Climbing",
+    detail: "A long break from climbing turned pain into product instinct.",
+  },
+  {
+    title: "The founder posture",
+    meta: "Founder mode",
+    detail: "Build before permission. Write before certainty. Compound in public.",
+  },
+];
+
+const INFLUENCES = [
+  "David Senra",
+  "Mohamed Alabbar",
+  "Key Person of Influence",
+  "Nusantara Futurism",
+  "GTM Engineering",
+  "Vibe Marketing",
+];
+
+const TOOLKIT = [
+  "AI workflows",
+  "Brand systems",
+  "Writing",
+  "Next.js",
+  "Research",
+  "Ops",
 ];
 
 const PRINCIPLES = [
@@ -48,10 +104,7 @@ export default function HomePage() {
   return (
     <main className="site">
       <TopNav />
-      <Hero />
-      <CurrentlySection />
-      <SystemSection />
-      <FieldNotesSection />
+      <IndexBento />
       <ContactStrip />
       <SiteFoot />
     </main>
@@ -62,16 +115,19 @@ function TopNav() {
   return (
     <nav className="topnav" aria-label="Primary">
       <a href="/" className="wordmark" aria-label="Home">
-        <span className="wordmark-mark">N/I</span>
+        <span className="wordmark-avatar" aria-hidden>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/profile-emerald.png" alt="" />
+        </span>
         <span>Nong Izz Harith</span>
       </a>
 
       <ul className="topnav-links">
         <li>
-          <a href="#current">Now</a>
+          <a href="#index">Index</a>
         </li>
         <li>
-          <a href="#system">System</a>
+          <a href="#feeds">Feeds</a>
         </li>
         <li>
           <a href="#notes">Notes</a>
@@ -82,6 +138,7 @@ function TopNav() {
         <span className="status">
           <span className="status-dot" /> Cyberjaya, MY
         </span>
+        <ThemeToggle />
         <a href="#contact" className="cta-pill">
           Contact
         </a>
@@ -90,155 +147,245 @@ function TopNav() {
   );
 }
 
-function Hero() {
+function IndexBento() {
   return (
-    <section className="hero" id="home">
-      <div className="hero-copy">
-        <p className="eyebrow">N.01 / INDEX / MAY 2026</p>
+    <section className="bento index-bento" id="index" aria-labelledby="index-title">
+      <Script
+        src="https://platform.twitter.com/widgets.js"
+        strategy="lazyOnload"
+      />
+      <Script src="https://www.instagram.com/embed.js" strategy="lazyOnload" />
+      <Script
+        src="https://platform.linkedin.com/badges/js/profile.js"
+        strategy="lazyOnload"
+      />
 
-        <h1 className="hero-headline">
-          Building sharper systems for strange ideas.
-        </h1>
-
-        <p className="hero-route">Strange ideas -&gt; sharp products.</p>
-
-        <p className="hero-doctrine">
-          I am Nong Izz Harith, a founder and fourth-year engineering student
-          in Cyberjaya. I build digital experiments, brand systems, and AI workflows
-          for quiet markets that deserve better taste.
-        </p>
-
-        <div className="hero-ctas">
-          <a href="#contact" className="cta-primary">
-            Send a signal
-          </a>
-          <a href="#notes" className="cta-secondary">
-            Read the notes
-          </a>
-        </div>
-
-        <dl className="hero-stats" aria-label="Profile summary">
-          <div>
-            <dt>Status</dt>
-            <dd>Building</dd>
+      <div className="bento-grid">
+        <article className="bento-card bento-story">
+          <p className="eyebrow">N.01 / INDEX / MAY 2026</p>
+          <h1 id="index-title">Founder mode from Cyberjaya.</h1>
+          <p>
+            I am Nong Izz Harith, a fourth-year Computer Engineering student at
+            MMU, building digital experiments, brand systems, and AI workflows.
+            Gulf-raised, Malaysia-built, now operating from Cyberjaya.
+          </p>
+          <div className="hero-ctas">
+            <a href="#contact" className="cta-primary">
+              Send a signal
+            </a>
+            <a href="#notes" className="cta-secondary">
+              Read the notes
+            </a>
           </div>
-          <div>
-            <dt>Base</dt>
-            <dd>Cyberjaya, Malaysia</dd>
-          </div>
-          <div>
-            <dt>Mode</dt>
-            <dd>Founder, student</dd>
-          </div>
-          <div>
-            <dt>Signal</dt>
-            <dd>Taste, systems, AI</dd>
-          </div>
-        </dl>
-      </div>
+        </article>
 
-      <aside className="hero-panel" aria-label="Portrait and identity card">
-        <figure className="hero-portrait">
+        <aside className="bento-card bento-portrait" aria-label="Portrait">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/bnw-profile.jpg" alt="Nong Izz Harith" />
-        </figure>
-
-        <div className="id-card">
-          <div>
-            <p className="id-label">Identity</p>
-            <p className="id-name">Nong Izz Harith</p>
+          <div className="portrait-caption">
+            <span>Nong Izz Harith</span>
+            <span>Cyberjaya / Founder mode</span>
           </div>
-          <div className="id-grid">
-            <span>03.0738 N</span>
-            <span>101.5183 E</span>
-            <span>MMU / Year 4</span>
-            <span>Founder mode</span>
-          </div>
-        </div>
-      </aside>
-    </section>
-  );
-}
+        </aside>
 
-function CurrentlySection() {
-  return (
-    <section className="current" id="current" aria-labelledby="current-title">
-      <div className="section-kicker">Current operating state</div>
-      <div className="current-grid">
-        <div className="current-title-block">
-          <h2 id="current-title">Now, not someday.</h2>
+        <article className="bento-card bento-timeline">
+          <p className="bento-kicker">Storyline</p>
+          <div className="timeline-list">
+            {STORY_POINTS.map((item) => (
+              <div className="timeline-item" key={item.title}>
+                <div>
+                  <strong>{item.title}</strong>
+                  <span>{item.detail}</span>
+                </div>
+                <p>{item.meta}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="bento-card bento-founder-mode">
+          <p className="bento-kicker">Founder mode</p>
+          <h3>For students who cannot wait for permission.</h3>
           <p>
-            The site is a live instrument. Less resume, more readout. It should
-            tell you what I am paying attention to before a meeting begins.
+            The constraint is the point. Classes, deadlines, and small windows
+            of time force the work to become compressed, direct, and real.
           </p>
-        </div>
+        </article>
 
-        <div className="current-list">
-          {CURRENT.map((item) => (
-            <div className="current-item" key={item.label}>
-              <span>{item.label}</span>
-              <strong>{item.value}</strong>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SystemSection() {
-  return (
-    <section className="system" id="system" aria-labelledby="system-title">
-      <div className="system-copy">
-        <p className="eyebrow">N.02 / PERSONAL OS</p>
-        <h2 id="system-title">A builder needs a dashboard, not a brochure.</h2>
-        <p>
-          This is the public edge of a larger private system: notes, decisions,
-          experiments, operating cadence, and the small signals that compound
-          into taste.
-        </p>
-      </div>
-
-      <div className="principles" aria-label="Operating principles">
-        {PRINCIPLES.map((principle, index) => (
-          <div className="principle" key={principle}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <p>{principle}</p>
+        <article className="bento-card bento-now">
+          <p className="bento-kicker">Current state</p>
+          <div className="current-list bento-current-list">
+            {CURRENT.map((item) => (
+              <div className="current-item" key={item.label}>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </section>
-  );
-}
+        </article>
 
-function FieldNotesSection() {
-  return (
-    <section className="notes" id="notes" aria-labelledby="notes-title">
-      <header className="section-head">
-        <div>
-          <p className="eyebrow">N.03 / FIELD NOTES</p>
-          <h2 className="section-title" id="notes-title">
-            Essays from the edge of the work.
-          </h2>
-        </div>
-        <p className="section-blurb">
-          Short notes on taste, software, category design, and how people make
-          things look inevitable.
-        </p>
-      </header>
+        <article className="bento-card bento-references">
+          <p className="bento-kicker">Influence map</p>
+          <h3>Built from biographies, systems, and market taste.</h3>
+          <div className="tool-grid">
+            {INFLUENCES.map((reference) => (
+              <span key={reference}>{reference}</span>
+            ))}
+          </div>
+        </article>
 
-      <div className="notes-grid">
-        {NOTES.map((note) => (
-          <a key={note.title} className="note" href="#contact">
-            <div className="note-meta">
-              <span>{note.date}</span>
-              <span>{note.tag}</span>
+        <article className="bento-card bento-tools">
+          <p className="bento-kicker">Toolkit</p>
+          <div className="tool-grid">
+            {TOOLKIT.map((tool) => (
+              <span key={tool}>{tool}</span>
+            ))}
+          </div>
+        </article>
+
+        <article className="bento-card bento-notes" id="notes">
+          <div className="bento-card-head">
+            <div>
+              <p className="bento-kicker">Field notes</p>
+              <h3>Essays from the edge of the work.</h3>
             </div>
-            <h3 className="note-title">{note.title}</h3>
-            <p className="note-excerpt">{note.excerpt}</p>
-            <span className="note-link">Request draft</span>
-          </a>
-        ))}
+            <a href="#contact">Request draft</a>
+          </div>
+          <div className="bento-notes-grid">
+            {NOTES.map((note) => (
+              <a key={note.title} className="note-mini" href="#contact">
+                <span>
+                  {note.date} / {note.tag}
+                </span>
+                <strong>{note.title}</strong>
+                <p>{note.excerpt}</p>
+              </a>
+            ))}
+          </div>
+        </article>
+
+        <article className="bento-card bento-profile">
+          <div>
+            <p className="bento-kicker">Public graph</p>
+            <h3>@nongizzharith</h3>
+            <p>
+              The open surface for notes, experiments, taste, and the slow
+              proof of a builder becoming inevitable.
+            </p>
+          </div>
+          <div className="bento-social-row" aria-label="Social links">
+            <a href={SOCIAL_LINKS.youtube}>YT</a>
+            <a href={SOCIAL_LINKS.linkedin}>IN</a>
+            <a href={SOCIAL_LINKS.instagram}>IG</a>
+            <a href={SOCIAL_LINKS.x}>X</a>
+          </div>
+        </article>
+
+        <article className="bento-card bento-youtube" id="feeds">
+          <div className="bento-card-head">
+            <div>
+              <p className="bento-kicker">YouTube</p>
+              <h3>Latest videos</h3>
+            </div>
+            <a href={SOCIAL_LINKS.youtube}>Open channel</a>
+          </div>
+          <div className="video-row">
+            <a href={SOCIAL_LINKS.youtube}>
+              <span>01</span>
+              <strong>Channel embed ready</strong>
+              <p>Send the channel ID, playlist ID, or video IDs.</p>
+            </a>
+            <a href={SOCIAL_LINKS.youtube}>
+              <span>02</span>
+              <strong>Essays in motion</strong>
+              <p>A slot for long-form builds, notes, and breakdowns.</p>
+            </a>
+          </div>
+        </article>
+
+        <article className="bento-card bento-x">
+          <div className="bento-card-head">
+            <div>
+              <p className="bento-kicker">X</p>
+              <h3>Public feed</h3>
+            </div>
+            <a href={SOCIAL_LINKS.x}>Open X</a>
+          </div>
+          <div className="embed-frame">
+            <a
+              className="twitter-timeline"
+              data-height="360"
+              data-chrome="noheader nofooter noborders transparent"
+              href={`${SOCIAL_LINKS.x}?ref_src=twsrc%5Etfw`}
+            >
+              Posts by Nong Izz Harith
+            </a>
+          </div>
+        </article>
+
+        <article className="bento-card bento-instagram">
+          <div className="bento-card-head">
+            <div>
+              <p className="bento-kicker">Instagram</p>
+              <h3>Visual signal</h3>
+            </div>
+            <a href={SOCIAL_LINKS.instagram}>Open IG</a>
+          </div>
+          <div className="embed-frame">
+            <blockquote
+              className="instagram-media"
+              data-instgrm-permalink={SOCIAL_LINKS.instagram}
+              data-instgrm-version="14"
+            >
+              <a href={SOCIAL_LINKS.instagram}>View Instagram profile</a>
+            </blockquote>
+          </div>
+        </article>
+
+        <article className="bento-card bento-linkedin">
+          <div className="bento-card-head">
+            <div>
+              <p className="bento-kicker">LinkedIn</p>
+              <h3>Professional graph</h3>
+            </div>
+            <a href={SOCIAL_LINKS.linkedin}>Open profile</a>
+          </div>
+          <div className="linkedin-fallback">
+            <p>
+              LinkedIn blocks full feed embeds. This card is wired for the
+              public profile badge and falls back to the profile link.
+            </p>
+            <a href={SOCIAL_LINKS.linkedin}>linkedin.com/in/nongizzharith</a>
+          </div>
+          <div
+            className="badge-base LI-profile-badge"
+            data-locale="en_US"
+            data-size="medium"
+            data-theme="dark"
+            data-type="VERTICAL"
+            data-vanity="nongizzharith"
+            data-version="v1"
+          >
+            <a
+              className="badge-base__link LI-simple-link"
+              href={SOCIAL_LINKS.linkedin}
+            >
+              Nong Izz Harith
+            </a>
+          </div>
+        </article>
+
+        <article className="bento-card bento-principles">
+          <p className="bento-kicker">Operating principles</p>
+          <div className="principles compact-principles" aria-label="Operating principles">
+            {PRINCIPLES.map((principle, index) => (
+              <div className="principle" key={principle}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <p>{principle}</p>
+              </div>
+            ))}
+          </div>
+        </article>
       </div>
     </section>
   );
