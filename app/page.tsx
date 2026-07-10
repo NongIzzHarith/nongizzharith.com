@@ -80,27 +80,41 @@ const CURRENT = [
   },
 ];
 
-const STORY_POINTS = [
+const STORY = [
   {
-    title: "Gulf-raised, Malaysia-built",
-    meta: "Bahrain -> Cyberjaya",
+    n: "01",
+    place: "MANAMA, BAHRAIN",
+    title: "Gulf childhood",
     detail:
-      "Ten years outside Malaysia made the return feel like a market map.",
+      "Ten years growing up in Bahrain. Gulf culture, trust dynamics, and Arab business relationships absorbed from the inside.",
   },
   {
-    title: "The student constraint",
-    meta: "MMU / Engineering",
-    detail: "Computer engineering by day. Building systems in the margins.",
+    n: "02",
+    place: "KLANG, SELANGOR",
+    title: "The return",
+    detail:
+      "Home after a decade away. Malaysia felt familiar and strange at once, worth studying like a market map.",
   },
   {
-    title: "The comeback thread",
-    meta: "Climbing",
-    detail: "A long break from climbing turned pain into product instinct.",
+    n: "03",
+    place: "SUBANG JAYA",
+    title: "First sales",
+    detail:
+      "Cold calls and market mornings selling durian juice. Low margins, real lessons in how money actually moves.",
   },
   {
-    title: "The founder posture",
-    meta: "Founder mode",
-    detail: "Build before permission. Write before certainty. Compound in public.",
+    n: "04",
+    place: "MEDI-WEALTH",
+    title: "The 61 hours",
+    detail:
+      "Automated renewal emails for an insurance brokerage. Four hours of work became thirty minutes, 61 hours saved per 1,000 renewals. Sawang Tech starts here.",
+  },
+  {
+    n: "05",
+    place: "CYBERJAYA",
+    title: "Founder mode",
+    detail:
+      "Building AI infrastructure for underserved ASEAN verticals: insurance, healthcare, the halal economy. Computer engineering at MMU by day.",
   },
 ];
 
@@ -207,16 +221,25 @@ function IndexBento() {
           </div>
         </aside>
 
-        <article className="bento-card bento-timeline">
-          <p className="bento-kicker">Storyline</p>
-          <div className="timeline-list">
-            {STORY_POINTS.map((item) => (
-              <div className="timeline-item" key={item.title}>
-                <div>
+        <article className="bento-card bento-timeline" id="story">
+          <div className="bento-card-head">
+            <div>
+              <p className="bento-kicker">Storyline</p>
+              <h3>From the Gulf to Cyberjaya.</h3>
+            </div>
+            <a href={SOCIAL_LINKS.substack}>Read the long version</a>
+          </div>
+          <div className="story-list">
+            {STORY.map((item) => (
+              <div className="story-row" key={item.n}>
+                <span className="story-num" aria-hidden>
+                  {item.n}
+                </span>
+                <div className="story-body">
                   <strong>{item.title}</strong>
-                  <span>{item.detail}</span>
+                  <p>{item.detail}</p>
                 </div>
-                <p>{item.meta}</p>
+                <p className="story-place">{item.place}</p>
               </div>
             ))}
           </div>

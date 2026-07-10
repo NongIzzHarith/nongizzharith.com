@@ -783,49 +783,59 @@ main.site {
   padding-top: 0;
 }
 
-.timeline-list {
+.story-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
 }
 
-.timeline-item {
+.story-row {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-  align-items: start;
-  padding-right: 20px;
-  margin-right: 20px;
-  border-right: 1px solid var(--border-soft);
+  grid-template-columns: 130px 1fr 220px;
+  gap: 32px;
+  align-items: center;
+  padding: 26px 0;
+  border-top: 1px solid var(--border-soft);
 }
 
-.timeline-item:last-child {
-  padding-right: 0;
-  margin-right: 0;
-  border-right: 0;
+.story-row:first-child {
+  border-top: 0;
+  padding-top: 4px;
 }
 
-.timeline-item strong {
+.story-row:last-child {
+  padding-bottom: 4px;
+}
+
+.story-num {
+  color: var(--mint);
+  font-family: var(--display);
+  font-size: clamp(48px, 5vw, 76px);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.story-body strong {
   display: block;
   color: var(--text);
-  font-size: 17px;
-  line-height: 1.2;
+  font-size: 20px;
+  line-height: 1.15;
 }
 
-.timeline-item span {
-  display: block;
-  margin-top: 5px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.45;
-}
-
-.timeline-item p {
-  margin: 0;
+.story-body p {
+  max-width: 62ch;
+  margin: 8px 0 0;
   color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.story-place {
+  margin: 0;
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 11px;
   text-transform: uppercase;
+  text-align: right;
 }
 
 .tool-grid {
@@ -1320,15 +1330,14 @@ main.site {
     max-width: 12ch;
   }
 
-  .timeline-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+  .story-row {
+    grid-template-columns: 90px 1fr;
+    gap: 20px;
   }
 
-  .timeline-item:nth-child(2n) {
-    padding-right: 0;
-    margin-right: 0;
-    border-right: 0;
+  .story-place {
+    grid-column: 2;
+    text-align: left;
   }
 
   .notes-grid {
@@ -1413,22 +1422,24 @@ main.site {
   .notes-grid,
   .work-row,
   .bento-notes-grid,
-  .tool-grid,
-  .timeline-list {
+  .tool-grid {
     grid-template-columns: 1fr;
   }
 
-  .timeline-item {
-    padding-right: 0;
-    padding-bottom: 16px;
-    margin-right: 0;
-    border-right: 0;
-    border-bottom: 1px solid var(--border-soft);
+  .story-row {
+    grid-template-columns: 64px 1fr;
+    gap: 16px;
+    padding: 20px 0;
+    align-items: start;
   }
 
-  .timeline-item:last-child {
-    padding-bottom: 0;
-    border-bottom: 0;
+  .story-num {
+    font-size: 40px;
+  }
+
+  .story-place {
+    grid-column: 2;
+    text-align: left;
   }
 
   .bento-card {
