@@ -848,19 +848,20 @@ main.site {
   text-align: center;
 }
 
-.bento-youtube,
+.bento-work,
 .bento-notes {
   grid-column: span 8;
 }
 
-.video-row,
+.work-row,
 .bento-notes-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 14px;
 }
 
-.video-row a,
+.work-row > a,
+.work-row > div,
 .note-mini {
   display: flex;
   min-height: 180px;
@@ -874,7 +875,7 @@ main.site {
     var(--card-2);
 }
 
-.video-row span,
+.work-row span,
 .note-mini span {
   margin-bottom: auto;
   color: var(--mint);
@@ -883,14 +884,14 @@ main.site {
   text-transform: uppercase;
 }
 
-.video-row strong,
+.work-row strong,
 .note-mini strong {
   color: var(--text);
   font-size: 20px;
   line-height: 1.15;
 }
 
-.video-row p,
+.work-row p,
 .note-mini p {
   margin: 8px 0 0;
   color: var(--muted);
@@ -898,58 +899,15 @@ main.site {
   line-height: 1.45;
 }
 
-.bento-x,
-.bento-instagram,
-.bento-linkedin {
-  grid-column: span 4;
-  min-height: 470px;
+.work-row > a {
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
 }
 
-.embed-frame {
-  min-height: 330px;
-  overflow: auto;
-  border: 1px solid var(--border-soft);
-  border-radius: var(--r-md);
-  background: var(--bg-soft);
-}
-
-.embed-frame > a,
-.embed-frame blockquote {
-  display: block;
-  margin: 0;
-  padding: 18px;
-  color: var(--text-dim);
-  font-family: var(--mono);
-  font-size: 12px;
-}
-
-.instagram-media {
-  max-width: 100%;
-  min-width: 0;
-  width: 100%;
-}
-
-.linkedin-fallback {
-  padding: 18px;
-  border: 1px solid var(--border-soft);
-  border-radius: var(--r-md);
-  background: var(--bg-soft);
-}
-
-.linkedin-fallback p {
-  margin: 0 0 14px;
-  font-size: 14px;
-  line-height: 1.55;
-}
-
-.linkedin-fallback a {
-  color: var(--mint);
-  font-family: var(--mono);
-  font-size: 11px;
-}
-
-.LI-profile-badge {
-  margin-top: 14px;
+.work-row > a:hover {
+  border-color: rgba(var(--accent-rgb), 0.5);
+  transform: translateY(-2px);
 }
 
 .bento-principles {
@@ -1341,10 +1299,7 @@ main.site {
   .bento-timeline,
   .bento-tools,
   .bento-references,
-  .bento-youtube,
-  .bento-x,
-  .bento-instagram,
-  .bento-linkedin,
+  .bento-work,
   .bento-notes,
   .bento-principles {
     grid-column: span 1;
@@ -1456,7 +1411,7 @@ main.site {
 
   .principles,
   .notes-grid,
-  .video-row,
+  .work-row,
   .bento-notes-grid,
   .tool-grid,
   .timeline-list {
@@ -1505,16 +1460,6 @@ main.site {
 
   .bento-card-head {
     flex-direction: column;
-  }
-
-  .bento-x,
-  .bento-instagram,
-  .bento-linkedin {
-    min-height: 0;
-  }
-
-  .embed-frame {
-    min-height: 260px;
   }
 
   .principle {

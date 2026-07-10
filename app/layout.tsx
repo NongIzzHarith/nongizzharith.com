@@ -16,11 +16,31 @@ const display = Space_Grotesk({
   display: "swap",
 });
 
+const SITE_URL = "https://www.nongizzharith.com";
+const SITE_TITLE = "Nong Izz Harith";
+const SITE_DESCRIPTION =
+  "Founder mode from Cyberjaya. Fourth-year Computer Engineering student at MMU, building AI systems for underserved ASEAN markets with Sawang Tech.";
+
 export const metadata: Metadata = {
-  title: "Nong Izz Harith",
-  description:
-    "Personal site of Nong Izz Harith, builder, strategist, and digital experimenter.",
-  icons: { icon: "/favicon.ico" },
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_TITLE,
+    locale: "en_US",
+    type: "website",
+    images: [{ url: "/images/og.jpg", width: 1200, height: 662 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    creator: "@nongizzharith",
+    images: ["/images/og.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -46,7 +66,11 @@ export default function RootLayout({
   `;
 
   return (
-    <html lang="en" className={`${mono.variable} ${display.variable}`}>
+    <html
+      lang="en"
+      className={`${mono.variable} ${display.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

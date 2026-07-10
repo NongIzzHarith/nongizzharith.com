@@ -1,4 +1,3 @@
-import Script from "next/script";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const SOCIAL_LINKS = {
@@ -6,7 +5,37 @@ const SOCIAL_LINKS = {
   x: "https://x.com/nongizzharith",
   youtube: "https://www.youtube.com/@nongizzharith",
   linkedin: "https://linkedin.com/in/nongizzharith",
+  substack: "https://nongizzharith.substack.com",
 };
+
+const WORK = [
+  {
+    tag: "INSURANCE / LIVE",
+    title: "Lindung AI",
+    detail:
+      "AI automation for Malaysian insurance brokerages. 61 hours saved per 1,000 renewals.",
+    href: "https://lindungai.com",
+  },
+  {
+    tag: "HEALTHCARE",
+    title: "DoseBase",
+    detail:
+      "Oncology pharmacy workflow software, built for Malaysia's National Cancer Institute.",
+  },
+  {
+    tag: "HALAL ECONOMY",
+    title: "WakatuAI",
+    detail:
+      "Halal nutrition intelligence. Meal photo recognition with certification verification.",
+  },
+  {
+    tag: "COMPANY",
+    title: "Sawang Tech",
+    detail:
+      "The parent company. AI infrastructure for underserved ASEAN verticals.",
+    href: "https://sawangtech.com",
+  },
+];
 
 const NOTES = [
   {
@@ -127,7 +156,7 @@ function TopNav() {
           <a href="#index">Index</a>
         </li>
         <li>
-          <a href="#feeds">Feeds</a>
+          <a href="#work">Work</a>
         </li>
         <li>
           <a href="#notes">Notes</a>
@@ -150,16 +179,6 @@ function TopNav() {
 function IndexBento() {
   return (
     <section className="bento index-bento" id="index" aria-labelledby="index-title">
-      <Script
-        src="https://platform.twitter.com/widgets.js"
-        strategy="lazyOnload"
-      />
-      <Script src="https://www.instagram.com/embed.js" strategy="lazyOnload" />
-      <Script
-        src="https://platform.linkedin.com/badges/js/profile.js"
-        strategy="lazyOnload"
-      />
-
       <div className="bento-grid">
         <article className="bento-card bento-story">
           <p className="eyebrow">N.01 / INDEX / MAY 2026</p>
@@ -249,11 +268,11 @@ function IndexBento() {
               <p className="bento-kicker">Field notes</p>
               <h3>Essays from the edge of the work.</h3>
             </div>
-            <a href="#contact">Request draft</a>
+            <a href={SOCIAL_LINKS.substack}>Read on Substack</a>
           </div>
           <div className="bento-notes-grid">
             {NOTES.map((note) => (
-              <a key={note.title} className="note-mini" href="#contact">
+              <a key={note.title} className="note-mini" href={SOCIAL_LINKS.substack}>
                 <span>
                   {note.date} / {note.tag}
                 </span>
@@ -281,97 +300,30 @@ function IndexBento() {
           </div>
         </article>
 
-        <article className="bento-card bento-youtube" id="feeds">
+        <article className="bento-card bento-work" id="work">
           <div className="bento-card-head">
             <div>
-              <p className="bento-kicker">YouTube</p>
-              <h3>Latest videos</h3>
+              <p className="bento-kicker">Selected work</p>
+              <h3>Proof over promise.</h3>
             </div>
-            <a href={SOCIAL_LINKS.youtube}>Open channel</a>
+            <a href="https://sawangtech.com">sawangtech.com</a>
           </div>
-          <div className="video-row">
-            <a href={SOCIAL_LINKS.youtube}>
-              <span>01</span>
-              <strong>Channel embed ready</strong>
-              <p>Send the channel ID, playlist ID, or video IDs.</p>
-            </a>
-            <a href={SOCIAL_LINKS.youtube}>
-              <span>02</span>
-              <strong>Essays in motion</strong>
-              <p>A slot for long-form builds, notes, and breakdowns.</p>
-            </a>
-          </div>
-        </article>
-
-        <article className="bento-card bento-x">
-          <div className="bento-card-head">
-            <div>
-              <p className="bento-kicker">X</p>
-              <h3>Public feed</h3>
-            </div>
-            <a href={SOCIAL_LINKS.x}>Open X</a>
-          </div>
-          <div className="embed-frame">
-            <a
-              className="twitter-timeline"
-              data-height="360"
-              data-chrome="noheader nofooter noborders transparent"
-              href={`${SOCIAL_LINKS.x}?ref_src=twsrc%5Etfw`}
-            >
-              Posts by Nong Izz Harith
-            </a>
-          </div>
-        </article>
-
-        <article className="bento-card bento-instagram">
-          <div className="bento-card-head">
-            <div>
-              <p className="bento-kicker">Instagram</p>
-              <h3>Visual signal</h3>
-            </div>
-            <a href={SOCIAL_LINKS.instagram}>Open IG</a>
-          </div>
-          <div className="embed-frame">
-            <blockquote
-              className="instagram-media"
-              data-instgrm-permalink={SOCIAL_LINKS.instagram}
-              data-instgrm-version="14"
-            >
-              <a href={SOCIAL_LINKS.instagram}>View Instagram profile</a>
-            </blockquote>
-          </div>
-        </article>
-
-        <article className="bento-card bento-linkedin">
-          <div className="bento-card-head">
-            <div>
-              <p className="bento-kicker">LinkedIn</p>
-              <h3>Professional graph</h3>
-            </div>
-            <a href={SOCIAL_LINKS.linkedin}>Open profile</a>
-          </div>
-          <div className="linkedin-fallback">
-            <p>
-              LinkedIn blocks full feed embeds. This card is wired for the
-              public profile badge and falls back to the profile link.
-            </p>
-            <a href={SOCIAL_LINKS.linkedin}>linkedin.com/in/nongizzharith</a>
-          </div>
-          <div
-            className="badge-base LI-profile-badge"
-            data-locale="en_US"
-            data-size="medium"
-            data-theme="dark"
-            data-type="VERTICAL"
-            data-vanity="nongizzharith"
-            data-version="v1"
-          >
-            <a
-              className="badge-base__link LI-simple-link"
-              href={SOCIAL_LINKS.linkedin}
-            >
-              Nong Izz Harith
-            </a>
+          <div className="work-row">
+            {WORK.map((item) =>
+              item.href ? (
+                <a key={item.title} href={item.href}>
+                  <span>{item.tag}</span>
+                  <strong>{item.title}</strong>
+                  <p>{item.detail}</p>
+                </a>
+              ) : (
+                <div key={item.title}>
+                  <span>{item.tag}</span>
+                  <strong>{item.title}</strong>
+                  <p>{item.detail}</p>
+                </div>
+              )
+            )}
           </div>
         </article>
 
@@ -405,15 +357,15 @@ function ContactStrip() {
         </p>
 
         <div className="contact-actions">
-          <a className="cta-primary" href="mailto:hello@nongizzharith.com">
-            hello@nongizzharith.com
+          <a className="cta-primary" href="mailto:nong.izz.harith@outlook.com">
+            nong.izz.harith@outlook.com
           </a>
           <div className="contact-handles" aria-label="Social links">
             <a href="https://x.com/nongizzharith">x</a>
             <span>/</span>
             <a href="https://linkedin.com/in/nongizzharith">linkedin</a>
             <span>/</span>
-            <a href="https://whatizzit.substack.com">substack</a>
+            <a href="https://nongizzharith.substack.com">substack</a>
             <span>/</span>
             <a href="https://github.com/nongizzharith">github</a>
           </div>
@@ -432,8 +384,8 @@ function SiteFoot() {
       </div>
       <div className="foot-right">
         <span>Cyberjaya, MY</span>
-        <span>03.0738 N</span>
-        <span>v2.1</span>
+        <span>02.9213 N / 101.6559 E</span>
+        <span>v2.2</span>
       </div>
     </footer>
   );
