@@ -1,3 +1,5 @@
+import SiteNav from "@/components/SiteNav";
+
 const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/nongharith/",
   x: "https://x.com/nongizzharith",
@@ -101,6 +103,7 @@ export default function HomePage() {
   return (
     <>
       <HeroFull />
+      <SiteNav />
       <main className="site">
         <IndexBento />
         <ContactStrip />
@@ -114,43 +117,23 @@ function HeroFull() {
   return (
     <header className="hero-full">
       <picture>
-        <source
-          media="(max-width: 820px)"
-          srcSet="/images/hero-mobile.jpg"
-        />
+        <source media="(max-width: 820px)" srcSet="/images/hero-mobile.jpg" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/hero-desktop.jpg" alt="Nong Izz Harith" />
       </picture>
-      <TopNav />
-    </header>
-  );
-}
 
-function TopNav() {
-  return (
-    <nav className="topnav" aria-label="Primary">
-      <ul className="topnav-links">
-        <li>
-          <a href="#index">Index</a>
-        </li>
-        <li>
-          <a href="#work">Work</a>
-        </li>
-        <li>
-          <a href="#notes">Notes</a>
-        </li>
-      </ul>
-
-      <a href="/" className="wordmark" aria-label="Home">
-        Nong Izz Harith
+      <a href="#index" className="scroll-cue" aria-label="Scroll to content">
+        <span>Scroll</span>
+        <svg viewBox="0 0 16 44" aria-hidden focusable="false">
+          <path
+            d="M8 0 V40 M1.5 32.5 L8 40.5 L14.5 32.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          />
+        </svg>
       </a>
-
-      <div className="topnav-right">
-        <a href="#contact" className="cta-pill">
-          Contact
-        </a>
-      </div>
-    </nav>
+    </header>
   );
 }
 
