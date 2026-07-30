@@ -1,5 +1,3 @@
-import ThemeToggle from "@/components/ThemeToggle";
-
 const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/nongharith/",
   x: "https://x.com/nongizzharith",
@@ -61,25 +59,6 @@ const NOTES = [
   },
 ];
 
-const CURRENT = [
-  {
-    label: "MODE",
-    value: "Founder mode, student constraints",
-  },
-  {
-    label: "BASE",
-    value: "Cyberjaya, MMU orbit",
-  },
-  {
-    label: "NOW",
-    value: "Building, writing, learning in public",
-  },
-  {
-    label: "SIGNAL",
-    value: "Taste, systems, personal leverage",
-  },
-];
-
 const STORY = [
   {
     n: "01",
@@ -118,53 +97,38 @@ const STORY = [
   },
 ];
 
-const INFLUENCES = [
-  "David Senra",
-  "Mohamed Alabbar",
-  "Key Person of Influence",
-  "Nusantara Futurism",
-  "GTM Engineering",
-  "Vibe Marketing",
-];
-
-const TOOLKIT = [
-  "AI workflows",
-  "Brand systems",
-  "Writing",
-  "Next.js",
-  "Research",
-  "Ops",
-];
-
-const PRINCIPLES = [
-  "Make the interface feel like intent.",
-  "Write until the idea has teeth.",
-  "Keep the system legible under pressure.",
-  "Prefer quiet confidence over noise.",
-];
-
 export default function HomePage() {
   return (
-    <main className="site">
+    <>
+      <HeroFull />
+      <main className="site">
+        <IndexBento />
+        <ContactStrip />
+        <SiteFoot />
+      </main>
+    </>
+  );
+}
+
+function HeroFull() {
+  return (
+    <header className="hero-full">
+      <picture>
+        <source
+          media="(max-width: 820px)"
+          srcSet="/images/hero-mobile.jpg"
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/hero-desktop.jpg" alt="Nong Izz Harith" />
+      </picture>
       <TopNav />
-      <IndexBento />
-      <ContactStrip />
-      <SiteFoot />
-    </main>
+    </header>
   );
 }
 
 function TopNav() {
   return (
     <nav className="topnav" aria-label="Primary">
-      <a href="/" className="wordmark" aria-label="Home">
-        <span className="wordmark-avatar" aria-hidden>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/profile-emerald.png" alt="" />
-        </span>
-        <span>Nong Izz Harith</span>
-      </a>
-
       <ul className="topnav-links">
         <li>
           <a href="#index">Index</a>
@@ -177,11 +141,11 @@ function TopNav() {
         </li>
       </ul>
 
+      <a href="/" className="wordmark" aria-label="Home">
+        Nong Izz Harith
+      </a>
+
       <div className="topnav-right">
-        <span className="status">
-          <span className="status-dot" /> Cyberjaya, MY
-        </span>
-        <ThemeToggle />
         <a href="#contact" className="cta-pill">
           Contact
         </a>
@@ -192,35 +156,8 @@ function TopNav() {
 
 function IndexBento() {
   return (
-    <section className="bento index-bento" id="index" aria-labelledby="index-title">
+    <section className="bento index-bento" id="index">
       <div className="bento-grid">
-        <article className="bento-card bento-story">
-          <p className="eyebrow">N.01 / INDEX / MAY 2026</p>
-          <h1 id="index-title">Founder mode from Cyberjaya.</h1>
-          <p>
-            I am Nong Izz Harith, a fourth-year Computer Engineering student at
-            MMU, building digital experiments, brand systems, and AI workflows.
-            Gulf-raised, Malaysia-built, now operating from Cyberjaya.
-          </p>
-          <div className="hero-ctas">
-            <a href="#contact" className="cta-primary">
-              Send a signal
-            </a>
-            <a href="#notes" className="cta-secondary">
-              Read the notes
-            </a>
-          </div>
-        </article>
-
-        <aside className="bento-card bento-portrait" aria-label="Portrait">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/bnw-profile.jpg" alt="Nong Izz Harith" />
-          <div className="portrait-caption">
-            <span>Nong Izz Harith</span>
-            <span>Cyberjaya / Founder mode</span>
-          </div>
-        </aside>
-
         <article className="bento-card bento-timeline" id="story">
           <div className="bento-card-head">
             <div>
@@ -245,46 +182,6 @@ function IndexBento() {
           </div>
         </article>
 
-        <article className="bento-card bento-founder-mode">
-          <p className="bento-kicker">Founder mode</p>
-          <h3>For students who cannot wait for permission.</h3>
-          <p>
-            The constraint is the point. Classes, deadlines, and small windows
-            of time force the work to become compressed, direct, and real.
-          </p>
-        </article>
-
-        <article className="bento-card bento-now">
-          <p className="bento-kicker">Current state</p>
-          <div className="current-list bento-current-list">
-            {CURRENT.map((item) => (
-              <div className="current-item" key={item.label}>
-                <span>{item.label}</span>
-                <strong>{item.value}</strong>
-              </div>
-            ))}
-          </div>
-        </article>
-
-        <article className="bento-card bento-references">
-          <p className="bento-kicker">Influence map</p>
-          <h3>Built from biographies, systems, and market taste.</h3>
-          <div className="tool-grid">
-            {INFLUENCES.map((reference) => (
-              <span key={reference}>{reference}</span>
-            ))}
-          </div>
-        </article>
-
-        <article className="bento-card bento-tools">
-          <p className="bento-kicker">Toolkit</p>
-          <div className="tool-grid">
-            {TOOLKIT.map((tool) => (
-              <span key={tool}>{tool}</span>
-            ))}
-          </div>
-        </article>
-
         <article className="bento-card bento-notes" id="notes">
           <div className="bento-card-head">
             <div>
@@ -303,23 +200,6 @@ function IndexBento() {
                 <p>{note.excerpt}</p>
               </a>
             ))}
-          </div>
-        </article>
-
-        <article className="bento-card bento-profile">
-          <div>
-            <p className="bento-kicker">Public graph</p>
-            <h3>@nongizzharith</h3>
-            <p>
-              The open surface for notes, experiments, taste, and the slow
-              proof of a builder becoming inevitable.
-            </p>
-          </div>
-          <div className="bento-social-row" aria-label="Social links">
-            <a href={SOCIAL_LINKS.youtube}>YT</a>
-            <a href={SOCIAL_LINKS.linkedin}>IN</a>
-            <a href={SOCIAL_LINKS.instagram}>IG</a>
-            <a href={SOCIAL_LINKS.x}>X</a>
           </div>
         </article>
 
@@ -350,17 +230,6 @@ function IndexBento() {
           </div>
         </article>
 
-        <article className="bento-card bento-principles">
-          <p className="bento-kicker">Operating principles</p>
-          <div className="principles compact-principles" aria-label="Operating principles">
-            {PRINCIPLES.map((principle, index) => (
-              <div className="principle" key={principle}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <p>{principle}</p>
-              </div>
-            ))}
-          </div>
-        </article>
       </div>
     </section>
   );

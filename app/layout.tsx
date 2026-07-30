@@ -48,38 +48,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const themeScript = `
-    (() => {
-      try {
-        const stored = window.localStorage.getItem("nongizzharith-theme");
-        const theme = stored === "light" || stored === "dark"
-          ? stored
-          : window.matchMedia("(prefers-color-scheme: light)").matches
-            ? "light"
-            : "dark";
-        document.documentElement.dataset.theme = theme;
-        document.documentElement.style.colorScheme = theme;
-      } catch {
-        document.documentElement.dataset.theme = "dark";
-      }
-    })();
-  `;
-
   return (
-    <html
-      lang="en"
-      className={`${mono.variable} ${display.variable}`}
-      suppressHydrationWarning
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
-      <body>
-        <div className="grid-bg" aria-hidden />
-        <div className="scanlines" aria-hidden />
-        <div className="vignette" aria-hidden />
-        {children}
-      </body>
+    <html lang="en" className={`${mono.variable} ${display.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
