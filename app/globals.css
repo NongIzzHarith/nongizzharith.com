@@ -70,10 +70,13 @@ button {
 }
 
 .statement {
-  --statement-bg: rgb(74, 74, 74);
   position: relative;
   z-index: 5;
-  background: var(--statement-bg);
+  background-color: rgb(74, 74, 74);
+  background-image: url("/images/statement-desktop.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #c9c9c9;
   padding: clamp(64px, 8vw, 124px) 0;
 }
@@ -1029,6 +1032,10 @@ main.site {
 
   .topnav {
     padding: 22px 24px;
+  }
+
+  .statement {
+    background-image: url("/images/statement-mobile.jpg");
   }
 
   .statement-inner {

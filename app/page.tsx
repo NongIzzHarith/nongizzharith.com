@@ -176,10 +176,8 @@ function IndexBento() {
         <article className="bento-card bento-timeline" id="story">
           <div className="bento-card-head">
             <div>
-              <p className="bento-kicker">Storyline</p>
-              <h3>From the Gulf to Cyberjaya.</h3>
+              <h3>From the beginning</h3>
             </div>
-            <a href={SOCIAL_LINKS.substack}>Read the long version</a>
           </div>
           <div className="story-list">
             {STORY.map((item) => (
