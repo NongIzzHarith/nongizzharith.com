@@ -104,6 +104,7 @@ export default function HomePage() {
     <>
       <HeroFull />
       <SiteNav />
+      <StatementBand />
       <main className="site">
         <IndexBento />
         <ContactStrip />
@@ -134,6 +135,37 @@ function HeroFull() {
         </svg>
       </a>
     </header>
+  );
+}
+
+function StatementBand() {
+  return (
+    <section className="statement" id="about" aria-labelledby="statement-title">
+      <div className="statement-inner">
+        <div className="statement-copy">
+          <h2 className="statement-text" id="statement-title">
+            Nong Izz Harith; <span className="hl">placeholder role</span>,{" "}
+            <span className="hl">placeholder role</span>,{" "}
+            <span className="hl">placeholder role</span> and the{" "}
+            <span className="hl">placeholder headline phrase</span> &mdash;
+            placeholder copy for the statement that sits under the hero. Replace
+            this with the real positioning line about the work, the ventures and
+            why any of it exists.
+          </h2>
+
+          <a href="#story" className="statement-link">
+            About Izz <span aria-hidden>&rarr;</span>
+          </a>
+        </div>
+
+        <div className="statement-media">
+          <div className="statement-placeholder">
+            <span>Portrait</span>
+            <span>placeholder</span>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
