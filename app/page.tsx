@@ -144,13 +144,13 @@ function StatementBand() {
       <div className="statement-inner">
         <div className="statement-copy">
           <h2 className="statement-text" id="statement-title">
-            Nong Izz Harith; <span className="hl">placeholder role</span>,{" "}
-            <span className="hl">placeholder role</span>,{" "}
-            <span className="hl">placeholder role</span> and the{" "}
-            <span className="hl">placeholder headline phrase</span> &mdash;
-            placeholder copy for the statement that sits under the hero. Replace
-            this with the real positioning line about the work, the ventures and
-            why any of it exists.
+            Nong Izz Harith;{" "}
+            <span className="hl">founder, engineer and writer</span>, building AI
+            infrastructure for the parts of ASEAN that enterprise software priced
+            out. Insurance brokerages, oncology pharmacies, halal supply chains.
+            The first system I shipped gave a brokerage back{" "}
+            <span className="hl">61 hours per thousand renewals</span>. Most of
+            the rest gets built between lectures at MMU.
           </h2>
 
           <a href="#story" className="statement-link">
