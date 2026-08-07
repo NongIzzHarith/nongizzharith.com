@@ -6,11 +6,52 @@ const FEED_URL = "https://nongizzharith.substack.com/feed";
 // a real essay, so it never belongs on the shelf.
 const PLACEHOLDER = /\/p\/coming-soon\/?$/;
 
+const MONTHS = [
+  "JAN",
+  "FEB",
+  "MAR",
+  "APR",
+  "MAY",
+  "JUN",
+  "JUL",
+  "AUG",
+  "SEP",
+  "OCT",
+  "NOV",
+  "DEC",
+];
+
 function field(chunk: string, tag: string) {
   const match = chunk.match(
     new RegExp(`<${tag}>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?</${tag}>`)
   );
   return match ? match[1].trim() : "";
+}
+
+function stripHtml(value: string) {
+  return value
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function summarise(value: string, limit = 180) {
+  const text = stripHtml(value);
+  if (text.length <= limit) return text;
+  return `${text.slice(0, limit).replace(/\s+\S*$/, "")}...`;
+}
+
+// Formatted on the server so both renders emit identical markup.
+function formatDate(pubDate: string) {
+  const parsed = new Date(pubDate);
+  if (Number.isNaN(parsed.getTime())) return "";
+  return `${MONTHS[parsed.getUTCMonth()]} ${parsed.getUTCDate()}, ${parsed.getUTCFullYear()}`;
 }
 
 export async function getArchivePosts(): Promise<ArchivePost[]> {
@@ -24,9 +65,12 @@ export async function getArchivePosts(): Promise<ArchivePost[]> {
       .split("<item>")
       .slice(1)
       .map((chunk) => ({
-        title: field(chunk, "title"),
+        title: stripHtml(field(chunk, "title")),
         link: field(chunk, "link"),
-        date: field(chunk, "pubDate"),
+        date: formatDate(field(chunk, "pubDate")),
+        summary: summarise(
+          field(chunk, "description") || field(chunk, "content:encoded")
+        ),
       }))
       .filter((post) => post.title && post.link && !PLACEHOLDER.test(post.link));
   } catch {

@@ -1425,3 +1425,233 @@ main.site {
     padding: 0 24px;
   }
 }
+
+/* Blank demo spines shown before the first editions publish */
+.shelf-blank .shelf-track {
+  cursor: default;
+  overflow-x: hidden;
+  justify-content: center;
+}
+
+.arch-book.is-blank {
+  pointer-events: none;
+  opacity: 0.82;
+}
+
+/* Book detail view */
+.arch-book {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.edition {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.edition-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  animation: edition-fade 220ms ease both;
+}
+
+.edition-stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0;
+  width: min(980px, 100%);
+  max-height: min(84vh, 720px);
+  animation: edition-rise 260ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes edition-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes edition-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.edition-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 42px 38px;
+  background: linear-gradient(150deg, #1b1b1b, #0a0a0a 60%);
+  color: #f4f4f1;
+  border-radius: 4px 0 0 4px;
+  box-shadow: inset -14px 0 26px rgba(0, 0, 0, 0.5);
+}
+
+.edition-cover-date {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.24em;
+}
+
+.edition-cover-title {
+  margin: 26px 0 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(24px, 2.6vw, 40px);
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+.edition-cover-rule {
+  width: 92px;
+  height: 2px;
+  margin-top: 26px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.edition-cover-mark {
+  margin: auto 0 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+}
+
+.edition-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 46px 44px;
+  background: var(--bg);
+  border-radius: 0 4px 4px 0;
+  overflow-y: auto;
+}
+
+.edition-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 180ms ease;
+}
+
+.edition-close:hover {
+  border-color: var(--text);
+}
+
+.edition-date {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+
+.edition-title {
+  margin: 0 0 18px;
+  max-width: 20ch;
+  font-size: clamp(24px, 2.6vw, 36px);
+  font-weight: 600;
+  line-height: 1.14;
+}
+
+.edition-summary {
+  margin: 0 0 32px;
+  max-width: 46ch;
+  color: var(--text-dim);
+  font-size: 16px;
+  line-height: 1.62;
+}
+
+.edition-read {
+  align-self: flex-start;
+  padding: 16px 26px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.edition-read:hover {
+  border-color: var(--text);
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+
+.edition-hint {
+  margin: 28px 0 0;
+  color: var(--muted-2);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edition-scrim,
+  .edition-stage {
+    animation: none;
+  }
+}
+
+@media (max-width: 820px) {
+  .edition-stage {
+    grid-template-columns: 1fr;
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+
+  .edition-cover {
+    border-radius: 4px 4px 0 0;
+    padding: 30px 26px;
+    box-shadow: none;
+  }
+
+  .edition-cover-rule {
+    display: none;
+  }
+
+  .edition-cover-mark {
+    margin-top: 22px;
+  }
+
+  .edition-panel {
+    border-radius: 0 0 4px 4px;
+    padding: 32px 26px;
+  }
+}

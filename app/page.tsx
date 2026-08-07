@@ -139,15 +139,18 @@ async function ArchiveSection() {
       {hasArchive ? (
         <ArchiveShelf posts={posts} />
       ) : (
-        <div className="archive-empty">
-          <p>
-            The first essays are still being written. Subscribe and they will
-            land in your inbox as they publish.
-          </p>
-          <a className="cta-primary" href={SOCIAL_LINKS.substack}>
-            Subscribe on Substack
-          </a>
-        </div>
+        <>
+          <ArchiveShelf posts={[]} blankCount={22} />
+          <div className="archive-empty">
+            <p>
+              The shelf fills as the first editions publish. Subscribe and they
+              will land in your inbox.
+            </p>
+            <a className="cta-primary" href={SOCIAL_LINKS.substack}>
+              Subscribe on Substack
+            </a>
+          </div>
+        </>
       )}
     </section>
   );
