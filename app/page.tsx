@@ -131,7 +131,7 @@ async function ArchiveSection() {
       <div className="archive-head">
         <h2 id="archive-title">Newsletter Archive</h2>
         <p>
-          Every edition of What Izz. Field notes on building AI systems for
+          Every edition of What Izz it? Field notes on building AI systems for
           ASEAN, written between lectures.
         </p>
       </div>
@@ -296,23 +296,6 @@ function ContactStrip() {
           Collaboration, brand work, AI systems, or a sharp note from the
           internet. I read everything, and I write up what I learn on Substack.
         </p>
-
-        <form
-          className="signup"
-          action="https://nongizzharith.substack.com/subscribe"
-          method="get"
-          target="_blank"
-          rel="noopener"
-        >
-          <input
-            type="email"
-            name="email"
-            placeholder="name@email.com"
-            aria-label="Email address"
-            required
-          />
-          <button type="submit">Sign up</button>
-        </form>
 
         <a className="contact-mail" href="mailto:nong.izz.harith@outlook.com">
           nong.izz.harith@outlook.com

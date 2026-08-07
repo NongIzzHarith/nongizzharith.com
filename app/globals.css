@@ -966,66 +966,19 @@ main.site {
   margin: 30px 0 0;
 }
 
-.signup {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-  max-width: 470px;
-  margin-top: 32px;
-}
-
-.signup input {
-  flex: 1;
-  min-width: 0;
-  min-height: 52px;
-  padding: 0 18px;
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  background: var(--card-2);
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 15px;
-}
-
-.signup input::placeholder {
-  color: var(--muted-2);
-}
-
-.signup input:focus-visible {
-  outline: none;
-  border-color: var(--text);
-}
-
-.signup button {
-  min-height: 52px;
-  padding: 0 26px;
-  border: 1px solid var(--text);
-  border-radius: var(--r-md);
-  background: var(--button-bg);
-  color: var(--button-text);
-  font-family: var(--display);
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity 180ms ease;
-}
-
-.signup button:hover {
-  opacity: 0.82;
-}
-
 .contact-mail {
-  margin-top: 26px;
-  color: var(--muted);
+  margin-top: 38px;
+  color: var(--text);
   font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
+  font-size: clamp(15px, 2.1vw, 20px);
+  letter-spacing: 0.02em;
   border-bottom: 1px solid var(--border);
-  transition: color 180ms ease;
+  padding-bottom: 4px;
+  transition: border-color 180ms ease;
 }
 
 .contact-mail:hover {
-  color: var(--text);
+  border-color: var(--text);
 }
 
 .contact-foot {
@@ -1146,11 +1099,6 @@ main.site {
   .drawer-links a {
     font-size: 26px;
     padding: 15px 0;
-  }
-
-  .signup {
-    flex-direction: column;
-    gap: 12px;
   }
 
   .hero-stats {
