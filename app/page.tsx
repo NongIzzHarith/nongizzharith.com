@@ -1,7 +1,13 @@
 import SiteNav from "@/components/SiteNav";
+import ArchiveShelf from "@/components/ArchiveShelf";
+import { getArchivePosts } from "@/lib/substack";
+
+// The shelf only reads as an archive once there is a run of posts. Below this
+// it renders the invitation instead of a near-empty row of books.
+const MIN_POSTS = 3;
 
 const SOCIAL_LINKS = {
-  instagram: "https://www.instagram.com/nongharith/",
+  instagram: "https://www.instagram.com/nongizzharith/",
   x: "https://x.com/nongizzharith",
   youtube: "https://www.youtube.com/@nongizzharith",
   linkedin: "https://linkedin.com/in/nongizzharith",
@@ -34,30 +40,6 @@ const WORK = [
     detail:
       "The parent company. AI infrastructure for underserved ASEAN verticals.",
     href: "https://sawangtech.com",
-  },
-];
-
-const NOTES = [
-  {
-    date: "MAY 2026",
-    tag: "FOUNDER MODE",
-    title: "Founder mode is a student operating system",
-    excerpt:
-      "A way to build before permission, write before certainty, and let small windows of time compound.",
-  },
-  {
-    date: "APR 2026",
-    tag: "IDENTITY",
-    title: "The Bahrain return",
-    excerpt:
-      "Ten years outside Malaysia made the local market feel familiar, strange, and worth studying.",
-  },
-  {
-    date: "APR 2026",
-    tag: "COMEBACK",
-    title: "When the body becomes market research",
-    excerpt:
-      "Two years away from climbing turned a private constraint into sharper product instinct.",
   },
 ];
 
@@ -107,9 +89,11 @@ export default function HomePage() {
       <StatementBand />
       <main className="site">
         <IndexBento />
-        <ContactStrip />
-        <SiteFoot />
       </main>
+      <ArchiveSection />
+      <div className="site site-tail">
+        <ContactStrip />
+      </div>
     </>
   );
 }
@@ -135,6 +119,37 @@ function HeroFull() {
         </svg>
       </a>
     </header>
+  );
+}
+
+async function ArchiveSection() {
+  const posts = await getArchivePosts();
+  const hasArchive = posts.length >= MIN_POSTS;
+
+  return (
+    <section className="archive" id="notes" aria-labelledby="archive-title">
+      <div className="archive-head">
+        <h2 id="archive-title">Newsletter Archive</h2>
+        <p>
+          Every edition of What Izz. Field notes on building AI systems for
+          ASEAN, written between lectures.
+        </p>
+      </div>
+
+      {hasArchive ? (
+        <ArchiveShelf posts={posts} />
+      ) : (
+        <div className="archive-empty">
+          <p>
+            The first essays are still being written. Subscribe and they will
+            land in your inbox as they publish.
+          </p>
+          <a className="cta-primary" href={SOCIAL_LINKS.substack}>
+            Subscribe on Substack
+          </a>
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -195,27 +210,6 @@ function IndexBento() {
           </div>
         </article>
 
-        <article className="bento-card bento-notes" id="notes">
-          <div className="bento-card-head">
-            <div>
-              <p className="bento-kicker">Field notes</p>
-              <h3>Essays from the edge of the work.</h3>
-            </div>
-            <a href={SOCIAL_LINKS.substack}>Read on Substack</a>
-          </div>
-          <div className="bento-notes-grid">
-            {NOTES.map((note) => (
-              <a key={note.title} className="note-mini" href={SOCIAL_LINKS.substack}>
-                <span>
-                  {note.date} / {note.tag}
-                </span>
-                <strong>{note.title}</strong>
-                <p>{note.excerpt}</p>
-              </a>
-            ))}
-          </div>
-        </article>
-
         <article className="bento-card bento-work" id="work">
           <div className="bento-card-head">
             <div>
@@ -248,50 +242,87 @@ function IndexBento() {
   );
 }
 
+const HANDLES = [
+  {
+    label: "@nongizzharith",
+    href: SOCIAL_LINKS.youtube,
+    name: "YouTube",
+    icon: (
+      <path d="M23 12s0-3.9-.5-5.8a3 3 0 0 0-2.1-2.1C18.5 3.5 12 3.5 12 3.5s-6.5 0-8.4.6a3 3 0 0 0-2.1 2.1C1 8.1 1 12 1 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 8.4.6 8.4.6s6.5 0 8.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8zM9.8 15.6V8.4l6.2 3.6z" />
+    ),
+  },
+  {
+    label: "@nongizzharith",
+    href: SOCIAL_LINKS.x,
+    name: "X",
+    icon: (
+      <path d="M18.9 2H22l-7.1 8.1L23.2 22h-6.5l-5.1-6.7L5.8 22H2.7l7.6-8.7L1.3 2h6.6l4.6 6.1zm-1.1 18h1.7L7.3 3.7H5.4z" />
+    ),
+  },
+  {
+    label: "@nongizzharith",
+    href: SOCIAL_LINKS.instagram,
+    name: "Instagram",
+    icon: (
+      <>
+        <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4" fill="none" stroke="currentColor" strokeWidth="1.9" />
+        <circle cx="12" cy="12" r="4.4" fill="none" stroke="currentColor" strokeWidth="1.9" />
+        <circle cx="17.6" cy="6.4" r="1.3" />
+      </>
+    ),
+  },
+];
+
 function ContactStrip() {
   return (
     <section className="contact" id="contact" aria-labelledby="contact-title">
       <div className="contact-inner">
-        <p className="eyebrow">N.04 / SIGNAL</p>
         <h2 className="contact-title" id="contact-title">
           Send me the strange brief.
         </h2>
+
+        <div className="handle-pills" aria-label="Social links">
+          {HANDLES.map((handle) => (
+            <a key={handle.name} href={handle.href}>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden focusable="false">
+                {handle.icon}
+              </svg>
+              {handle.label}
+            </a>
+          ))}
+        </div>
+
         <p className="contact-blurb">
           Collaboration, brand work, AI systems, or a sharp note from the
-          internet. I read everything. Warm intros are even better.
+          internet. I read everything, and I write up what I learn on Substack.
         </p>
 
-        <div className="contact-actions">
-          <a className="cta-primary" href="mailto:nong.izz.harith@outlook.com">
-            nong.izz.harith@outlook.com
-          </a>
-          <div className="contact-handles" aria-label="Social links">
-            <a href="https://x.com/nongizzharith">x</a>
-            <span>/</span>
-            <a href="https://linkedin.com/in/nongizzharith">linkedin</a>
-            <span>/</span>
-            <a href="https://nongizzharith.substack.com">substack</a>
-            <span>/</span>
-            <a href="https://github.com/nongizzharith">github</a>
-          </div>
-        </div>
+        <form
+          className="signup"
+          action="https://nongizzharith.substack.com/subscribe"
+          method="get"
+          target="_blank"
+          rel="noopener"
+        >
+          <input
+            type="email"
+            name="email"
+            placeholder="name@email.com"
+            aria-label="Email address"
+            required
+          />
+          <button type="submit">Sign up</button>
+        </form>
+
+        <a className="contact-mail" href="mailto:nong.izz.harith@outlook.com">
+          nong.izz.harith@outlook.com
+        </a>
+
+        <p className="contact-foot">
+          &copy; {new Date().getFullYear()} Nong Izz Harith
+        </p>
       </div>
     </section>
   );
 }
 
-function SiteFoot() {
-  return (
-    <footer className="site-foot">
-      <div className="foot-left">
-        <span className="foot-mark">N/IZZ</span>
-        <span>(c) {new Date().getFullYear()} Nong Izz Harith</span>
-      </div>
-      <div className="foot-right">
-        <span>Cyberjaya, MY</span>
-        <span>02.9213 N / 101.6559 E</span>
-        <span>v2.2</span>
-      </div>
-    </footer>
-  );
-}
