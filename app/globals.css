@@ -31,6 +31,11 @@
   --r-lg: 18px;
   --r-md: 12px;
   --r-sm: 8px;
+
+  /* Two heading levels, nothing in between. Every section title uses
+     --h-section; headings nested inside a section use --h-sub. */
+  --h-section: clamp(34px, 3.6vw, 52px);
+  --h-sub: clamp(24px, 2.2vw, 32px);
 }
 
 * {
@@ -643,7 +648,7 @@ main.site {
 .bento-card h3 {
   margin: 0;
   color: var(--text);
-  font-size: 25px;
+  font-size: var(--h-sub);
   font-weight: 600;
   line-height: 1.12;
 }
@@ -806,7 +811,7 @@ main.site {
   margin: 0;
   color: var(--text);
   font-family: var(--display);
-  font-size: clamp(36px, 4vw, 58px);
+  font-size: var(--h-section);
   font-weight: 500;
   letter-spacing: 0;
   line-height: 1;
@@ -920,10 +925,11 @@ main.site {
   text-align: center;
 }
 
+/* No nowrap: forcing one line dragged this down to 19px on phones. It wraps
+   to two lines below ~430px and keeps the section scale instead. */
 .contact-title {
   margin-top: 0;
-  font-size: clamp(19px, 5.4vw, 52px);
-  white-space: nowrap;
+  text-wrap: balance;
 }
 
 .handle-pills {
@@ -1196,7 +1202,7 @@ main.site {
 .archive-head h2 {
   margin: 0 0 18px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(32px, 4.6vw, 62px);
+  font-size: var(--h-section);
   font-weight: 700;
   letter-spacing: -0.015em;
 }
