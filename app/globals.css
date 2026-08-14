@@ -82,7 +82,9 @@ button {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: #c9c9c9;
+  /* Held back from white so the .hl spans have somewhere to travel to.
+     4.56:1 on the rgb(74,74,74) band, which clears AA for body text. */
+  color: rgba(255, 255, 255, 0.62);
   padding: clamp(64px, 8vw, 124px) 0;
 }
 
@@ -107,8 +109,15 @@ button {
   text-wrap: balance;
 }
 
+/* Weight alone did nothing here: the whole statement is already 700. The
+   emphasis has to come from lightness plus a rule under the phrase, which
+   survives line wrapping in a way a border-bottom would not. */
 .statement-text .hl {
   color: #ffffff;
+  text-decoration: underline;
+  text-decoration-thickness: 0.045em;
+  text-underline-offset: 0.16em;
+  text-decoration-color: rgba(255, 255, 255, 0.45);
 }
 
 .statement-link {
