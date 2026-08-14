@@ -140,30 +140,29 @@ export default function ArchiveShelf({
 
   return (
     <div className={`shelf${isBlank ? " shelf-blank" : ""}`}>
-      {!isBlank && (
-        <p className="shelf-hint" aria-hidden>
-          drag · scroll · arrow keys
-        </p>
-      )}
+      <p className="shelf-hint" aria-hidden>
+        drag · scroll · arrow keys
+      </p>
 
-      {!isBlank && (
-        <button
-          type="button"
-          className="shelf-nav shelf-prev"
-          aria-label="Scroll archive left"
-          onClick={() => nudge(-1)}
-        >
-          &larr;
-        </button>
-      )}
+      <button
+        type="button"
+        className="shelf-nav shelf-prev"
+        aria-label="Scroll archive left"
+        onClick={() => nudge(-1)}
+      >
+        &larr;
+      </button>
 
       <div
         className="shelf-track"
         ref={trackRef}
-        role={isBlank ? "presentation" : "group"}
-        aria-label={isBlank ? undefined : "Newsletter archive, scrollable"}
-        aria-hidden={isBlank || undefined}
-        tabIndex={isBlank ? -1 : 0}
+        role="group"
+        aria-label={
+          isBlank
+            ? "Newsletter archive preview, scrollable"
+            : "Newsletter archive, scrollable"
+        }
+        tabIndex={0}
         onKeyDown={onTrackKeyDown}
       >
         {Array.from({ length: count }, (_, i) => {
@@ -175,6 +174,7 @@ export default function ArchiveShelf({
                 key={i}
                 className={`arch-book ${tone} is-blank`}
                 style={spineStyle(i)}
+                aria-hidden
               >
                 <span className="arch-book-face">
                   <span className="arch-book-rule" />
@@ -209,16 +209,14 @@ export default function ArchiveShelf({
         })}
       </div>
 
-      {!isBlank && (
-        <button
-          type="button"
-          className="shelf-nav shelf-next"
-          aria-label="Scroll archive right"
-          onClick={() => nudge(1)}
-        >
-          &rarr;
-        </button>
-      )}
+      <button
+        type="button"
+        className="shelf-nav shelf-next"
+        aria-label="Scroll archive right"
+        onClick={() => nudge(1)}
+      >
+        &rarr;
+      </button>
 
       <div className="shelf-floor" aria-hidden />
 

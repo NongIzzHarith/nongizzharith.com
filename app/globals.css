@@ -1427,15 +1427,15 @@ main.site {
 }
 
 /* Blank demo spines shown before the first editions publish */
-.shelf-blank .shelf-track {
-  cursor: default;
-  overflow-x: hidden;
-  justify-content: center;
+/* Blank spines scroll and drag exactly like real ones; they simply carry
+   no title and cannot be opened. */
+.arch-book.is-blank {
+  cursor: grab;
+  opacity: 0.82;
 }
 
-.arch-book.is-blank {
-  pointer-events: none;
-  opacity: 0.82;
+.shelf-blank .shelf-track.is-dragging .arch-book.is-blank {
+  cursor: grabbing;
 }
 
 /* Book detail view */
