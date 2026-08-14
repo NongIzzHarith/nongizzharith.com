@@ -87,8 +87,9 @@ export default function HomePage() {
       <HeroFull />
       <SiteNav />
       <StatementBand />
-      <main className="site">
-        <IndexBento />
+      <main className="site" id="index">
+        <Chapters />
+        <Ventures />
       </main>
       <ArchiveSection />
       <div className="site site-tail">
@@ -187,60 +188,71 @@ function StatementBand() {
   );
 }
 
-function IndexBento() {
+function Chapters() {
   return (
-    <section className="bento index-bento" id="index">
-      <div className="bento-grid">
-        <article className="bento-card bento-timeline" id="story">
-          <div className="bento-card-head">
-            <div>
-              <h3>From the beginning</h3>
-            </div>
-          </div>
-          <div className="story-list">
-            {STORY.map((item) => (
-              <div className="story-row" key={item.n}>
-                <span className="story-num" aria-hidden>
-                  {item.n}
-                </span>
-                <div className="story-body">
-                  <strong>{item.title}</strong>
-                  <p>{item.detail}</p>
-                </div>
-                <p className="story-place">{item.place}</p>
-              </div>
-            ))}
-          </div>
-        </article>
+    <section className="chapters" id="story" aria-labelledby="chapters-title">
+      <h2 className="section-title" id="chapters-title">
+        From the beginning
+      </h2>
 
-        <article className="bento-card bento-work" id="work">
-          <div className="bento-card-head">
-            <div>
-              <p className="bento-kicker">Selected work</p>
-              <h3>Proof over promise.</h3>
+      <ol className="chapter-list">
+        {STORY.map((item) => (
+          <li className="chapter" key={item.n}>
+            <span className="chapter-num" aria-hidden>
+              {item.n}
+            </span>
+            <div className="chapter-body">
+              <p className="chapter-place">{item.place}</p>
+              <h3 className="chapter-title">{item.title}</h3>
+              <p className="chapter-detail">{item.detail}</p>
             </div>
-            <a href="https://sawangtech.com">sawangtech.com</a>
-          </div>
-          <div className="work-row">
-            {WORK.map((item) =>
-              item.href ? (
-                <a key={item.title} href={item.href}>
-                  <span>{item.tag}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.detail}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+function Ventures() {
+  return (
+    <section className="ventures" id="work" aria-labelledby="ventures-title">
+      <div className="ventures-head">
+        <h2 className="section-title" id="ventures-title">
+          Proof over promise.
+        </h2>
+        <a className="ventures-link" href="https://sawangtech.com">
+          sawangtech.com
+        </a>
+      </div>
+
+      <ul className="venture-list">
+        {WORK.map((item) => {
+          const body = (
+            <>
+              <p className="venture-tag">{item.tag}</p>
+              <h3 className="venture-title">{item.title}</h3>
+              <p className="venture-detail">{item.detail}</p>
+              {item.href && (
+                <span className="venture-arrow" aria-hidden>
+                  &rarr;
+                </span>
+              )}
+            </>
+          );
+
+          return (
+            <li className="venture" key={item.title}>
+              {item.href ? (
+                <a className="venture-row is-link" href={item.href}>
+                  {body}
                 </a>
               ) : (
-                <div key={item.title}>
-                  <span>{item.tag}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.detail}</p>
-                </div>
-              )
-            )}
-          </div>
-        </article>
-
-      </div>
+                <div className="venture-row">{body}</div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }
