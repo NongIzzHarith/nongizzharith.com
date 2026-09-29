@@ -621,6 +621,16 @@ main.site {
   letter-spacing: -0.045em;
 }
 
+/* Optional. Only chapters with a real photo on hand carry one; the rest
+   stay number-and-text, which is the fallback layout anyway. */
+.chapter-photo {
+  display: block;
+  width: min(100%, 320px);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  margin: 0 0 20px;
+}
+
 .chapter-place {
   margin: 0 0 14px;
   color: var(--muted);

@@ -50,6 +50,7 @@ const STORY = [
     title: "Gulf childhood",
     detail:
       "Ten years growing up in Bahrain. Gulf culture, trust dynamics, and Arab business relationships absorbed from the inside.",
+    image: "/images/chapter-bahrain.jpg",
   },
   {
     n: "02",
@@ -202,6 +203,10 @@ function Chapters() {
               {item.n}
             </span>
             <div className="chapter-body">
+              {item.image && (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img className="chapter-photo" src={item.image} alt="" />
+              )}
               <p className="chapter-place">{item.place}</p>
               <h3 className="chapter-title">{item.title}</h3>
               <p className="chapter-detail">{item.detail}</p>
