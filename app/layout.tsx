@@ -20,7 +20,7 @@ const display = Space_Grotesk({
 const SITE_URL = "https://www.nongizzharith.com";
 const SITE_TITLE = "Nong Izz Harith";
 const SITE_DESCRIPTION =
-  "Founder mode from Cyberjaya. Fourth-year Computer Engineering student at MMU, building AI systems for underserved ASEAN markets with Sawang Tech.";
+  "Founder mode from Cyberjaya. Fourth-year Computer Engineering student at MMU, building AI systems for underserved ASEAN markets.";
 
 const GA_MEASUREMENT_ID = "G-4FC571VT1N";
 

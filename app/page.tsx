@@ -34,13 +34,6 @@ const WORK = [
     detail:
       "Halal nutrition intelligence. Meal photo recognition with certification verification.",
   },
-  {
-    tag: "COMPANY",
-    title: "Sawang Tech",
-    detail:
-      "The parent company. AI infrastructure for underserved ASEAN verticals.",
-    href: "https://sawangtech.com",
-  },
 ];
 
 const STORY = [
@@ -71,7 +64,7 @@ const STORY = [
     place: "MEDI-WEALTH",
     title: "The 61 hours",
     detail:
-      "Automated renewal emails for an insurance brokerage. Four hours of work became thirty minutes, 61 hours saved per 1,000 renewals. Sawang Tech starts here.",
+      "Automated renewal emails for an insurance brokerage. Four hours of work became thirty minutes, 61 hours saved per 1,000 renewals. Lindung AI starts here.",
   },
   {
     n: "05",
@@ -225,9 +218,6 @@ function Ventures() {
         <h2 className="section-title" id="ventures-title">
           Proof over promise.
         </h2>
-        <a className="ventures-link" href="https://sawangtech.com">
-          sawangtech.com
-        </a>
       </div>
 
       <ul className="venture-list">
