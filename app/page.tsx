@@ -16,23 +16,29 @@ const SOCIAL_LINKS = {
 
 const WORK = [
   {
+    tag: "COMPUTER VISION / TM R&D",
+    title: "Exam paper extractor",
+    detail:
+      "Scanned exam papers in, structured questions and figure crops out. OCR plus vision models, merged into the team pipeline with 298 tests.",
+  },
+  {
+    tag: "EMBEDDED / CAPSTONE",
+    title: "SafeSight",
+    detail:
+      "Two-node ESP32 gas and temperature monitor linked over ESP-NOW. 27,000+ readings logged, Random Forest predicting 10 seconds ahead.",
+  },
+  {
+    tag: "EDGE AI / IN PROGRESS",
+    title: "Warehouse Safety Vision",
+    detail:
+      "YOLOv8 hazard detection for warehouses, moving onto a Jetson with a custom KiCad board around it.",
+  },
+  {
     tag: "INSURANCE / LIVE",
     title: "Lindung AI",
     detail:
       "AI automation for Malaysian insurance brokerages. 61 hours saved per 1,000 renewals.",
     href: "https://lindungai.com",
-  },
-  {
-    tag: "HEALTHCARE",
-    title: "DoseBase",
-    detail:
-      "Oncology pharmacy workflow software, built for Malaysia's National Cancer Institute.",
-  },
-  {
-    tag: "HALAL ECONOMY",
-    title: "WakatuAI",
-    detail:
-      "Halal nutrition intelligence. Meal photo recognition with certification verification.",
   },
 ];
 
@@ -71,7 +77,21 @@ const STORY = [
     place: "CYBERJAYA",
     title: "Founder mode",
     detail:
-      "Building AI infrastructure for underserved ASEAN verticals: insurance, healthcare, the halal economy. Computer engineering at MMU by day.",
+      "Building AI automation for Malaysian insurance brokerages. Computer engineering at MMU by day.",
+  },
+  {
+    n: "06",
+    place: "TM R&D, CYBERJAYA",
+    title: "Industrial training",
+    detail:
+      "Trainee at the Centre for Artificial Intelligence. Built an OCR and vision pipeline that turns scanned SPM papers into structured question data: 43 papers, 13 states, 2,300+ rows.",
+  },
+  {
+    n: "07",
+    place: "NEXT",
+    title: "AI onto hardware",
+    detail:
+      "Learning to put vision AI onto real devices: a model on a Jetson, a board I designed around it, an enclosure modelled in FreeCAD, and a week running in a real space.",
   },
 ];
 
@@ -158,12 +178,12 @@ function StatementBand() {
         <div className="statement-copy">
           <h2 className="statement-text" id="statement-title">
             Nong Izz Harith;{" "}
-            <span className="hl">founder, engineer and writer</span>, building AI
-            infrastructure for the parts of ASEAN that enterprise software priced
-            out. Insurance brokerages, oncology pharmacies, halal supply chains.
-            The first system I shipped gave a brokerage back{" "}
-            <span className="hl">61 hours per thousand renewals</span>. Most of
-            the rest gets built between lectures at MMU.
+            <span className="hl">engineer, founder and writer</span>. I build
+            embedded and vision AI systems end to end, from ESP32 firmware to
+            the models on top, and I&apos;m learning to put that AI onto real
+            hardware. The first system I shipped gave an insurance brokerage
+            back <span className="hl">61 hours per thousand renewals</span>. Most
+            of the rest gets built between lectures at MMU.
           </h2>
 
           <a href="#story" className="statement-link">
@@ -303,8 +323,8 @@ function ContactStrip() {
         </div>
 
         <p className="contact-blurb">
-          Collaboration, brand work, AI systems, or a sharp note from the
-          internet. I read everything, and I write up what I learn on Substack.
+          Embedded, edge AI and deployment roles, collaboration, or a sharp
+          note from the internet. I read everything, and I write up what I learn on Substack.
         </p>
 
         <a className="contact-mail" href="mailto:nong.izz.harith@outlook.com">
